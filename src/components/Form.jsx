@@ -23,7 +23,7 @@ const Form = () => {
         const validateDay = validateNumber(day)
         console.log(validateDay)
 
-        const errors = 
+
 
     }
 
