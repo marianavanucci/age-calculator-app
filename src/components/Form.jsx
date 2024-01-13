@@ -6,6 +6,7 @@ import { useState } from 'react'
 const Form = () => {
 
     const [day, setDay] = useState("");
+    const [errors, setErrors] = useState("");
 
 
 
@@ -23,22 +24,19 @@ const Form = () => {
         const validateDay = validateNumber(day)
         console.log(validateDay)
 
+        const errors =  (error) => {
+            if(!validateDay) {
+                setErrors("Must be a valid day")
+            } else {
+                return console.log("deu bom!")
+            }
+    }
 
+
+        setDay("")
 
     }
 
-    // function testNum(a) {
-    //     let result;
-    //     if (a > 0) {
-    //       result = 'positive';
-    //     } else {
-    //       result = 'NOT positive';
-    //     }
-    //     return result;
-    //   }
-      
-    //   console.log(testNum(-5));
-    //   // Expected output: "NOT positive"
 
   return (
     <form className=" pt-12 pl-6 flex flex-col content-center items-center" onSubmit={handleSubmit} >
