@@ -2,22 +2,43 @@
 
 import { useState } from 'react'
 
-import { validate } from '../../utils/validate'
 
 const Form = () => {
 
     const [day, setDay] = useState("");
 
-    const [errors, setErrors] = useState(null)
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log("cancelei envio automático do form")
 
+        console.log(day)
 
+
+        const validateNumber = (number) => {
+            return number <= 31;
+        }
+
+        const validateDay = validateNumber(day)
+        console.log(validateDay)
+
+        const errors = 
 
     }
+
+    // function testNum(a) {
+    //     let result;
+    //     if (a > 0) {
+    //       result = 'positive';
+    //     } else {
+    //       result = 'NOT positive';
+    //     }
+    //     return result;
+    //   }
+      
+    //   console.log(testNum(-5));
+    //   // Expected output: "NOT positive"
 
   return (
     <form className=" pt-12 pl-6 flex flex-col content-center items-center" onSubmit={handleSubmit} >
@@ -34,7 +55,7 @@ const Form = () => {
                                                 h-14
                                                 font-black
                                                 text-lg
-                                                pl-4"></input>
+                                                pl-4" value={day} onChange={(e) => setDay(e.target.value)}></input>
                 </div>
             <div className="w-1/3">
                 <label className="text-xs

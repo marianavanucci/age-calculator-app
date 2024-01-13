@@ -4,12 +4,12 @@ const validate = (data) => {
     if(!data.day) {
         errors['day'] = "Must be a valid day"
     }
-    if(!data.month) {
-        errors['month'] = "Must be a valid month"
-    }
-    if(!data.year) {
-        errors['year'] = "Must be in the past"
-    }
+    // if(!data.month) {
+    //     errors['month'] = "Must be a valid month"
+    // }
+    // if(!data.year) {
+    //     errors['year'] = "Must be in the past"
+    // }
 
     return errors;
 };
