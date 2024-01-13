@@ -1,7 +1,7 @@
 
 const Form = () => {
   return (
-    <form className=" py-12 pl-6 flex flex-col content-center items-center " >
+    <form className=" pt-12 pl-6 flex flex-col content-center items-center" >
         <div className="flex flex-row">
             <div className="w-1/3">
                     <label className="text-xs
@@ -52,10 +52,13 @@ const Form = () => {
                                             border-current
                                             m-auto
                                             text-white
-                                            w-14
-                                            h-14
-                                            my-8">&#9660;</button>
+                                            text-3xl
+                                            w-16
+                                            h-16
+                                            my-8">↓</button>
         </div>
+
+    
     </form>
   )
 }
