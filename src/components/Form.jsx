@@ -1,14 +1,33 @@
+"use client"; 
+
+import { useState } from 'react'
+
+import { validate } from '../../utils/validate'
 
 const Form = () => {
+
+    const [day, setDay] = useState("");
+
+    const [errors, setErrors] = useState(null)
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log("cancelei envio automático do form")
+
+
+
+    }
+
   return (
-    <form className=" pt-12 pl-6 flex flex-col content-center items-center" >
+    <form className=" pt-12 pl-6 flex flex-col content-center items-center" onSubmit={handleSubmit} >
         <div className="flex flex-row">
             <div className="w-1/3">
                     <label className="text-xs
                                 text-slate-500
                                 font-semibold
-                                tracking-widest">YEAR</label>
-                    <input type="name" className="border-neutral-300
+                                tracking-widest">DAY</label>
+                    <input type="number" min="1" className="border-neutral-300
                                                 border-2
                                                 rounded-md
                                                 w-24
@@ -22,7 +41,7 @@ const Form = () => {
                             text-slate-500
                             font-semibold
                             tracking-widest">MONTH</label>
-                <input type="name" className="border-neutral-300
+                <input type="number" className="border-neutral-300
                                                border-2
                                                rounded-md
                                                w-24
@@ -36,7 +55,7 @@ const Form = () => {
                             text-slate-500
                             font-semibold
                             tracking-widest">YEAR</label>
-                <input type="name" className="border-neutral-300
+                <input type="name" max="2" className="border-neutral-300
                                                border-2
                                                rounded-md
                                                w-24
