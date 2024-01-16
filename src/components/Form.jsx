@@ -9,6 +9,8 @@ const Form = ({addDay}) => {
 
     const [day, setDay] = useState("");
     const [month, setMonth] = useState("");
+    const [year, setYear] = useState("");
+
 
     const errorDay = ( ) => console.log(`Must be a valid day!`)  
 
@@ -20,24 +22,35 @@ const Form = ({addDay}) => {
         }
     }
 
-    const daysPossible = [1, 2, 3, 4, 5];
+    const daysPossible = Array.from({ length: 31 }, (_, index) => index + 1);
 
     const errorMonth = ( ) => console.log(`Must be a valid month!`) 
 
     const validateMonth = (list, number)  => {
         if (list.includes(number)) {
-            addDay(day)
+            addDay(month)
         } else {
             errorMonth()
         }
     }
 
-    const monthsPossible = [1, 2, 3, 4, 5];
+    const monthsPossible = Array.from({ length: 12 }, (_, index) => index + 1);
+
+    const errorYear = ( ) => console.log(`Must be in the past!`) 
+
+    const validateYear = (year)  => {
+        if (year <= 2025) {
+            addDay(year)
+        } else {
+            errorYear()
+        }
+    }
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!day || !month) return
-        console.log("cancelei envio automático do form", day, month)
+        if (!day || !month || !year) return
+        console.log("cancelei envio automático do form", day, month, year)
 
         const validateDayNumber = parseInt(day)
 
@@ -47,12 +60,30 @@ const Form = ({addDay}) => {
 
         validateMonth(monthsPossible, validateMonthNumber)
 
+        const validateYearNumber = parseInt(year)
+
+        validateYear(validateYearNumber)
+
+        const currentDate = new Date();
+
+        const birthday = new Date(year, month, day)
+        console.log(birthday)
+
+        const dateDiference = currentDate - birthday
+
+        const anos = Math.floor(dateDiference / (365.25 * 24 * 60 * 60 * 1000));
+        const meses = Math.floor((dateDiference % (365.25)) / (30.44)); 
+        const dias = Math.floor((dateDiference % 30.44));
+
+        console.log("Idade: " + anos + " anos, " + meses + " meses e " + dias + " dias.");
+
 
 
         // addDay(day)
 
         setDay("") //zera os campos
         setMonth("")
+        setYear("")
 
  
     }
@@ -94,14 +125,14 @@ const Form = ({addDay}) => {
                             text-slate-500
                             font-semibold
                             tracking-widest">YEAR</label>
-                <input type="name" max="2" className="border-neutral-300
+                <input type="name" className="border-neutral-300
                                                border-2
                                                rounded-md
                                                w-24
                                                h-14
                                                font-black
                                                text-lg
-                                               pl-4"></input>
+                                               pl-4" value={year} onChange={(e) => setYear(e.target.value)}></input>
             </div>
         </div>
         <div>

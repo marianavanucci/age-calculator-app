@@ -9,12 +9,14 @@ export default function Home() {
   const [datas, setDatas] = useState([{
     day: '- -',
     month: '- -',
+    year: '- -',
   }])
 
-  const addDay = (day, month) => {
+  const addDay = (day, month, year) => {
       const newData = [...datas, {
         day,
         month,
+        year,
       }
     ];
 
@@ -39,14 +41,13 @@ export default function Home() {
       <p><span className='text-violet-600'>- -</span> days</p>
     </div>
     <div className=''>
-        {datas.map((data) => (
-          <p><span key={data.day} className='text-violet-600' >{data.day}</span> days</p>
-        ))}
-    </div>
-    <div className=''>
-        {datas.map((data) => (
-          <p><span key={data.month} className='text-violet-600' >{data.month}</span> months</p>
-        ))}
+    {datas.map((data, index) => (
+            <div key={index}>
+              <p>{data.day} days</p>
+              <p>{data.month} months</p>
+              <p>{data.year} years</p>
+            </div>
+          ))} 
     </div>
     </div>
     </>
