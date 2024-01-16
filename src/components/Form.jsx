@@ -3,38 +3,23 @@
 import { useState } from 'react'
 
 
-const Form = () => {
+
+const Form = ({addDay}) => {
 
     const [day, setDay] = useState("");
-    const [errors, setErrors] = useState("");
-
+    const daysPossible = [1, 2, 3, 4, 5, 6, 7] // daysPossible.includes(day))
 
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("cancelei envio automático do form")
+        if (!day) return
+        console.log("cancelei envio automático do form", day)
 
-        console.log(day)
+        addDay(day)
 
+        setDay("") //zera os campos
 
-        const validateNumber = (number) => {
-            return number <= 31;
-        }
-
-        const validateDay = validateNumber(day)
-        console.log(validateDay)
-
-        const errors =  (error) => {
-            if(!validateDay) {
-                setErrors("Must be a valid day")
-            } else {
-                return console.log("deu bom!")
-            }
-    }
-
-
-        setDay("")
-
+ 
     }
 
 
@@ -46,14 +31,14 @@ const Form = () => {
                                 text-slate-500
                                 font-semibold
                                 tracking-widest">DAY</label>
-                    <input type="number" min="1" className="border-neutral-300
+                    <input type="name" className="border-neutral-300
                                                 border-2
                                                 rounded-md
                                                 w-24
                                                 h-14
                                                 font-black
                                                 text-lg
-                                                pl-4" value={day} onChange={(e) => setDay(e.target.value)}></input>
+                                                pl-4"  value={day} onChange={(e) => setDay(e.target.value)} ></input>
                 </div>
             <div className="w-1/3">
                 <label className="text-xs
